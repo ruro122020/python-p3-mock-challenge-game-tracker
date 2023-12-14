@@ -113,7 +113,7 @@ class TestPlayer:
         Result(player, game_1, 5000)
         Result(player, game_2, 19)
         Result(player, game_1, 100)
-
+        
         assert len(set(player.games_played())) == len(player.games_played())
         assert len(player.games_played()) == 2
 

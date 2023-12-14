@@ -15,13 +15,9 @@ class Game:
           raise Exception()
             
     def results(self):
-        #Returns a list of all results for that game
-        #Results must be of type Result
         return [result for result in Result.all if result.game == self]
 
     def players(self):
-        #Returns a unique list of all players that played a particular game
-        #Players must be of type Player
         results = self.results()
         return [result.player for result in results]
 
@@ -44,14 +40,16 @@ class Player:
             raise Exception()
 
     def results(self):
-        #Returns a list of all results for that player
-        #Results must be of type Result
         return [result for result in Result.all if result.player == self]
 
     def games_played(self):
         #Returns a unique list of all games played by a particular player
         #Games must be of type Game
-        pass
+      game_list = []
+      for result in self.results():
+        if result.game not in game_list:
+          game_list.append(result.game)
+      return game_list
 
     def played_game(self, game):
         pass
