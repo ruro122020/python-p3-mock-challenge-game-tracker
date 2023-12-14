@@ -22,17 +22,16 @@ class Game:
     def players(self):
         #Returns a unique list of all players that played a particular game
         #Players must be of type Player
-        return [player for player in Player.all if player.game == self]
+        results = self.results()
+        return [result.player for result in results]
 
     def average_score(self, player):
         pass
 
 class Player:
-    all = {}
 
     def __init__(self, username):
         self.username = username
-        type(self).all.append(self)
 
     @property
     def username(self):
@@ -47,7 +46,7 @@ class Player:
     def results(self):
         #Returns a list of all results for that player
         #Results must be of type Result
-        pass
+        return [result for result in Result.all if result.player == self]
 
     def games_played(self):
         #Returns a unique list of all games played by a particular player
