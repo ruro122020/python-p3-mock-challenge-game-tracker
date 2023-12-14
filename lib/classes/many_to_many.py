@@ -57,10 +57,29 @@ class Result:
     @property
     def score(self):
         return self._score
-    
     @score.setter
     def score(self, score):
         if isinstance(score, int) and score >= 1 and score <= 5000 and not hasattr(self, "score"):
             self._score = score
+        else:
+            raise Exception()
+    
+    @property
+    def player(self):
+        return self._player
+    @player.setter
+    def player(self, player):
+        if isinstance(player, Player):
+            self._player = player
+        else:
+            raise Exception()
+    
+    @property
+    def game(self):
+        return self._game
+    @game.setter
+    def game(self, game):
+        if isinstance(game, Game):
+            self._game = game
         else:
             raise Exception()
