@@ -53,3 +53,14 @@ class Result:
         self.player = player
         self.game = game
         self.score = score
+
+    @property
+    def score(self):
+        return self._score
+    
+    @score.setter
+    def score(self, score):
+        if isinstance(score, int) and score >= 1 and score <= 5000 and not hasattr(self, "score"):
+            self._score = score
+        else:
+            raise Exception()
