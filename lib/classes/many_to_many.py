@@ -1,3 +1,4 @@
+import ipdb
 class Game:
     def __init__(self, title):
         self.title = title
@@ -14,17 +15,24 @@ class Game:
           raise Exception()
             
     def results(self):
-        pass
+        #Returns a list of all results for that game
+        #Results must be of type Result
+        return [result for result in Result.all if result.game == self]
 
     def players(self):
-        pass
+        #Returns a unique list of all players that played a particular game
+        #Players must be of type Player
+        return [player for player in Player.all if player.game == self]
 
     def average_score(self, player):
         pass
 
 class Player:
+    all = {}
+
     def __init__(self, username):
         self.username = username
+        type(self).all.append(self)
 
     @property
     def username(self):
@@ -37,9 +45,13 @@ class Player:
             raise Exception()
 
     def results(self):
+        #Returns a list of all results for that player
+        #Results must be of type Result
         pass
 
     def games_played(self):
+        #Returns a unique list of all games played by a particular player
+        #Games must be of type Game
         pass
 
     def played_game(self, game):
@@ -49,10 +61,14 @@ class Player:
         pass
 
 class Result:
+
+    all = []
+    
     def __init__(self, player, game, score):
         self.player = player
         self.game = game
         self.score = score
+        type(self).all.append(self)
 
     @property
     def score(self):
