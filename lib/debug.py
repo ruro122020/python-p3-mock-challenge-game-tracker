@@ -8,14 +8,15 @@ from classes.many_to_many import Result
 if __name__ == '__main__':
     print("HELLO! :) let's debug :vibing_potato:")
 
-game_1 = Game("Skribbl.io")
-game_2 = Game("Codenames")
+game = Game("Skribbl.io")
+
 player = Player("Nick")
-Result(player, game_1, 5000)
-Result(player, game_2, 19)
-Result(player, game_1, 100)
-    
-print(len(set(player.games_played())) == len(player.games_played()))
-print(len(player.games_played()))
+player_2 = Player("Ari")
+Result(player, game, 4000)
+Result(player, game, 5000)
+Result(player_2, game, 4999)
+print(game.players())
+len(set(game.players())) == len(game.players())
+len(game.players()) == 2
 
     #ipdb.set_trace()

@@ -18,8 +18,11 @@ class Game:
         return [result for result in Result.all if result.game == self]
 
     def players(self):
-        results = self.results()
-        return [result.player for result in results]
+        player_list = []
+        for result in self.results():
+            if result.player not in player_list:
+                player_list.append(result.player)
+        return player_list
 
     def average_score(self, player):
         pass
