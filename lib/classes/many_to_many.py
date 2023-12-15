@@ -51,8 +51,6 @@ class Player:
         return [result for result in Result.all if result.player == self]
 
     def games_played(self):
-        #Returns a unique list of all games played by a particular player
-        #Games must be of type Game
       game_list = []
       for result in self.results():
         if result.game not in game_list:
@@ -60,10 +58,10 @@ class Player:
       return game_list
 
     def played_game(self, game):
-        pass
+      return game in self.games_played()
 
     def num_times_played(self, game):
-        pass
+      pass
 
 class Result:
 

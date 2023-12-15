@@ -8,12 +8,16 @@ from classes.many_to_many import Result
 if __name__ == '__main__':
     print("HELLO! :) let's debug :vibing_potato:")
 
-game = Game("Skribbl.io")
-player = Player("Nick")
-Result(player, game, 5000)
-Result(player, game, 4999)
-Result(player, game, 5000)
-Result(player, game, 4999)
+game_1 = Game("Skribbl.io")
+game_2 = Game("Scattegories")
+player_1 = Player("Saaammmm")
+player_2 = Player("ActuallyTopher")
+Result(player_1, game_1, 2000)
+Result(player_1, game_2, 3500)
+Result(player_2, game_1, 190)
 
-game.average_score(player) == 4999.5
+assert player_1.played_game(game_1) == True
+assert player_1.played_game(game_2) == True
+assert player_2.played_game(game_1) == True
+assert player_2.played_game(game_2) == False
     #ipdb.set_trace()
