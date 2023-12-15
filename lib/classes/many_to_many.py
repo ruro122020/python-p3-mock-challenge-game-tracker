@@ -25,7 +25,12 @@ class Game:
         return player_list
 
     def average_score(self, player):
-        pass
+        player_scores = []
+        for result in Result.all:
+            if result.player == player:
+                player_scores.append(result.score)
+        avg_score = sum(player_scores, 0)
+        return avg_score/len(player_scores)
 
 class Player:
 

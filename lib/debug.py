@@ -9,14 +9,11 @@ if __name__ == '__main__':
     print("HELLO! :) let's debug :vibing_potato:")
 
 game = Game("Skribbl.io")
-
 player = Player("Nick")
-player_2 = Player("Ari")
-Result(player, game, 4000)
 Result(player, game, 5000)
-Result(player_2, game, 4999)
-print(game.players())
-len(set(game.players())) == len(game.players())
-len(game.players()) == 2
+Result(player, game, 4999)
+Result(player, game, 5000)
+Result(player, game, 4999)
 
+game.average_score(player) == 4999.5
     #ipdb.set_trace()
