@@ -1,4 +1,4 @@
-import ipdb
+
 class Game:
     def __init__(self, title):
         self.title = title
@@ -12,7 +12,7 @@ class Game:
         if isinstance(title, str) and len(title) and not hasattr(self, "title"):
             self._title = title
         else:
-          raise Exception()
+          raise Exception("Title must be of type string, more than 1 character, and not set twice")
             
     def results(self):
         return [result for result in Result.all if result.game == self]
@@ -45,7 +45,7 @@ class Player:
         if isinstance(username, str) and len(username) >= 2 and len(username) <= 16:
             self._username = username
         else:
-            raise Exception()
+            raise Exception("username must be of type str and between 2 and 16 characters")
 
     def results(self):
         return [result for result in Result.all if result.player == self]
@@ -65,10 +65,7 @@ class Player:
 
     @classmethod 
     def highest_scored(cls, game):
-      #Returns the Player instance with the highest average score for the game provided.
-      #Returns None if there are no players that played the game provided.
       players_of_game = game.players()
-      #get average score for each player
       highest_scored = 0
       highest_player = None
       for player in players_of_game:
@@ -95,7 +92,7 @@ class Result:
         if isinstance(score, int) and score >= 1 and score <= 5000 and not hasattr(self, "score"):
             self._score = score
         else:
-            raise Exception()
+            raise Exception("Score must be of int type, between 1 and 5000, and not set twice")
     
     @property
     def player(self):
@@ -105,7 +102,7 @@ class Result:
         if isinstance(player, Player):
             self._player = player
         else:
-            raise Exception()
+            raise Exception("player must be of Player class")
     
     @property
     def game(self):
@@ -115,4 +112,4 @@ class Result:
         if isinstance(game, Game):
             self._game = game
         else:
-            raise Exception()
+            raise Exception('Game must be of Game class')
