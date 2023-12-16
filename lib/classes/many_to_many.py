@@ -64,11 +64,19 @@ class Player:
       return len([result.game for result in self.results() if result.game == game])
 
     @classmethod 
-    def highest_scored(game):
+    def highest_scored(cls, game):
       #Returns the Player instance with the highest average score for the game provided.
       #Returns None if there are no players that played the game provided.
-      pass
-
+      players_of_game = game.players()
+      #get average score for each player
+      highest_scored = 0
+      highest_player = None
+      for player in players_of_game:
+          if game.average_score(player) >= highest_scored:
+              highest_scored = game.average_score(player)
+              highest_player = player
+      return highest_player
+          
 class Result:
 
     all = []
